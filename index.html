@@ -6,177 +6,211 @@
 <title>Aira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F6C836;
-    --card: #7B5FD9;
-    --ink: #FFFFFF;
-    --ink-soft: rgba(255,255,255,0.75);
-    --line: #232A4D;
-    --accent: #6D8CFF;
+    --ink: #14120F;
+    --ink-soft: rgba(20,18,15,0.6);
+    --purple: #7B5FD9;
+    --pink: #F2A0C8;
+    --black: #14120F;
+    --cream: #FFFBF1;
+    --line: rgba(20,18,15,0.1);
   }
   * { box-sizing: border-box; }
-  html, body {
-    margin: 0;
-    min-height: 100%;
-    background: var(--bg);
-  }
+  html, body { margin: 0; min-height: 100%; background: var(--bg); }
   body {
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 32px 20px;
-    background: var(--bg);
+    padding: 44px 18px 60px;
+    position: relative;
+    overflow-x: hidden;
   }
-  .card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 2px;
-    padding: 48px 36px 40px;
+  .blob { position: absolute; border-radius: 50%; z-index: 0; }
+  .blob.b1 { width: 220px; height: 220px; background: var(--pink); top: -90px; right: -80px; opacity: 0.95; }
+  .blob.b2 { width: 160px; height: 160px; background: var(--purple); bottom: -60px; left: -60px; opacity: 0.9; }
+
+  .wrap { width: 100%; max-width: 420px; position: relative; z-index: 1; }
+
+  .brand { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+  .brand-left { display: flex; align-items: center; gap: 10px; }
+  .mark {
+    width: 36px; height: 36px; background: var(--black); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    box-shadow: 2px 3px 0 rgba(20,18,15,0.3);
   }
-  .wordmark {
+  .mark svg { width: 19px; height: 19px; }
+  .wordmark { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.02em; }
+  .sticker {
+    font-size: 11px; font-weight: 700; background: var(--black); color: var(--bg);
+    padding: 6px 11px; border-radius: 999px; transform: rotate(-3deg);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+
+  h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    font-size: 30px;
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1.05;
     letter-spacing: -0.02em;
-    margin: 0 0 6px;
-    color: var(--ink);
+    margin: 0 0 14px;
   }
-  .subtitle {
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 0 0 36px;
-    line-height: 1.5;
+  h1 .hl { color: var(--purple); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 5px; }
+  .subtitle { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 28px; line-height: 1.6; max-width: 38ch; }
+
+  .section-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-soft); margin: 0 0 10px 2px;
   }
-  .links {
-    display: flex;
-    flex-direction: column;
+
+  a.primary {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; text-decoration: none; color: var(--bg);
+    background: var(--black); border-radius: 16px; padding: 18px 20px;
+    border: 2px solid var(--black);
+    box-shadow: 4px 4px 0 rgba(20,18,15,0.9);
+    margin-bottom: 26px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  a.primary:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(20,18,15,0.9); }
+  a.primary:active { transform: translate(0,0); box-shadow: 2px 2px 0 rgba(20,18,15,0.9); }
+  .primary .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; }
+  .primary .desc { font-size: 12px; opacity: 0.7; }
+  .primary .row-left { display: flex; align-items: center; gap: 13px; }
+  .primary .avatar { width: 38px; height: 38px; border-radius: 10px; background: var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .primary .avatar svg { width: 18px; height: 18px; color: var(--black); }
+  .primary .arrow { font-size: 18px; }
+
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 26px; }
+  a.tile {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
+    text-decoration: none; color: var(--black);
+    border-radius: 16px; padding: 16px; border: 2px solid var(--black);
+    box-shadow: 4px 4px 0 rgba(20,18,15,0.9);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  a.tile:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(20,18,15,0.9); }
+  a.tile:active { transform: translate(0,0); box-shadow: 2px 2px 0 rgba(20,18,15,0.9); }
+  a.tile.pink { background: var(--pink); }
+  a.tile.purple { background: var(--purple); color: #fff; }
+  .tile .icon-badge { width: 32px; height: 32px; }
+  .tile .name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; }
+  .tile .desc { font-size: 11.5px; opacity: 0.75; margin-top: 1px; }
+
+  .card {
+    background: var(--cream); border-radius: 16px; border: 2px solid var(--black);
+    padding: 6px 14px;
   }
   a.link-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 4px;
-    border-top: 1px solid var(--line);
-    text-decoration: none;
-    color: var(--ink);
-    transition: padding-left 0.15s ease;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; padding: 14px 0; text-decoration: none; color: var(--ink);
   }
-  .links a.link-row:last-child { border-bottom: 1px solid var(--line); }
-  a.link-row:hover { padding-left: 10px; }
-  a.link-row:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  .label {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .label .name {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  .label .desc {
-    font-size: 12.5px;
-    color: var(--ink-soft);
-  }
-  .arrow {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 20px;
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-  .icon {
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-    color: var(--ink-soft);
-  }
-  .row-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
+  a.link-row:not(:last-child) { border-bottom: 1px solid var(--line); }
+  .row-left { display: flex; align-items: center; gap: 13px; min-width: 0; }
+  .icon-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .icon-circle svg { width: 15px; height: 15px; }
+  .label { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .label .name { font-size: 14.5px; font-weight: 600; }
+  .label .desc { font-size: 12px; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chev { color: var(--ink-soft); font-size: 15px; flex-shrink: 0; }
+
+  .foot { text-align: center; font-size: 11.5px; color: var(--ink-soft); margin-top: 26px; }
 </style>
 </head>
 <body>
-  <div class="card">
-    <p class="wordmark">Aira</p>
-    <p class="subtitle">Voice AI for Algerian Darija. Visit the site or follow along.</p>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
 
-    <div class="links">
-      <a class="link-row" href="https://airavoice.app/" target="_blank" rel="noopener">
-        <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-          <div class="label">
-            <span class="name">Website</span>
-            <span class="desc">airavoice.app</span>
-          </div>
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-left">
+        <div class="mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 20h5l3-6.5L15 20h5L12 3Z" fill="#F6C836"/></svg>
         </div>
-        <span class="arrow">&#8594;</span>
-      </a>
+        <span class="wordmark">Aira</span>
+      </div>
+      <span class="sticker">&#10024; DZ &middot; Darija</span>
+    </div>
 
-      <a class="link-row" href="https://www.instagram.com/aira.ai.dz?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
-        <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-          <div class="label">
-            <span class="name">Instagram</span>
-            <span class="desc">@aira.ai.dz</span>
-          </div>
-        </div>
-        <span class="arrow">&#8594;</span>
-      </a>
+    <h1>Everything in<br>one <span class="hl">place.</span></h1>
+    <p class="subtitle">Voice AI for Algerian Darija &mdash; the site, the socials, and a direct line to the team.</p>
 
-      <a class="link-row" href="https://www.tiktok.com/@aira_ai_dz?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">
-        <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 8.5a4.5 4.5 0 1 0 4.5 4.5V3.5a5 5 0 0 0 5 5"/></svg>
-          <div class="label">
-            <span class="name">TikTok</span>
-            <span class="desc">@aira_ai_dz</span>
-          </div>
+    <a class="primary" href="https://airavoice.app/" target="_blank" rel="noopener">
+      <div class="row-left">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
         </div>
-        <span class="arrow">&#8594;</span>
+        <div>
+          <div class="name">Visit the website</div>
+          <div class="desc">airavoice.app</div>
+        </div>
+      </div>
+      <span class="arrow">&#8594;</span>
+    </a>
+
+    <p class="section-label">Follow along</p>
+    <div class="tiles">
+      <a class="tile pink" href="https://www.instagram.com/aira.ai.dz?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+        <svg class="icon-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        <div>
+          <div class="name">Instagram</div>
+          <div class="desc">@aira.ai.dz</div>
+        </div>
       </a>
+      <a class="tile purple" href="https://www.tiktok.com/@aira_ai_dz?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">
+        <svg class="icon-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 8.5a4.5 4.5 0 1 0 4.5 4.5V3.5a5 5 0 0 0 5 5"/></svg>
+        <div>
+          <div class="name">TikTok</div>
+          <div class="desc">@aira_ai_dz</div>
+        </div>
+      </a>
+    </div>
+
+    <p class="section-label">Get in touch</p>
+    <div class="card">
       <a class="link-row" href="mailto:aira.socialsdz@gmail.com">
         <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+          </div>
           <div class="label">
             <span class="name">Email</span>
             <span class="desc">aira.socialsdz@gmail.com</span>
           </div>
         </div>
-        <span class="arrow">&#8594;</span>
+        <span class="chev">&#8250;</span>
       </a>
-
       <a class="link-row" href="tel:+213541937215">
         <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+          </div>
           <div class="label">
             <span class="name">Phone</span>
             <span class="desc">0541 93 72 15</span>
           </div>
         </div>
-        <span class="arrow">&#8594;</span>
+        <span class="chev">&#8250;</span>
       </a>
-
       <a class="link-row" href="tel:+213540511147">
         <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+          </div>
           <div class="label">
             <span class="name">Phone</span>
             <span class="desc">0540 51 11 47</span>
           </div>
         </div>
-        <span class="arrow">&#8594;</span>
+        <span class="chev">&#8250;</span>
       </a>
     </div>
+
+    <p class="foot">Aira &mdash; made in Algeria</p>
   </div>
 </body>
 </html>
