@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Yazid Boutiouta</title>
+<title>Aira</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0F2A2C;
-    --card: #F6F1E7;
-    --ink: #1E2422;
-    --ink-soft: #4A524E;
-    --line: #D8CFBB;
-    --accent: #B98A4E;
-  }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) { --bg: #0F2A2C; }
+    --bg: #F6C836;
+    --card: #7B5FD9;
+    --ink: #FFFFFF;
+    --ink-soft: rgba(255,255,255,0.75);
+    --line: #232A4D;
+    --accent: #6D8CFF;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -32,19 +29,21 @@
     align-items: center;
     justify-content: center;
     padding: 32px 20px;
+    background: var(--bg);
   }
   .card {
     width: 100%;
     max-width: 420px;
     background: var(--card);
     border: 1px solid var(--line);
+    border-radius: 2px;
     padding: 48px 36px 40px;
   }
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: clamp(28px, 6vw, 34px);
-    line-height: 1.15;
+  .wordmark {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.02em;
     margin: 0 0 6px;
     color: var(--ink);
   }
@@ -89,7 +88,7 @@
     color: var(--ink-soft);
   }
   .arrow {
-    font-family: 'Fraunces', serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 20px;
     color: var(--accent);
     flex-shrink: 0;
@@ -109,38 +108,70 @@
 </head>
 <body>
   <div class="card">
-    <h1>Dr. Yazid Boutiouta</h1>
-    <p class="subtitle">Find me on social media, or get directions to the practice.</p>
+    <p class="wordmark">Aira</p>
+    <p class="subtitle">Voice AI for Algerian Darija. Visit the site or follow along.</p>
 
     <div class="links">
-      <a class="link-row" href="https://www.instagram.com/dr_yazid_boutiouta_?stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
+      <a class="link-row" href="https://airavoice.app/" target="_blank" rel="noopener">
+        <div class="row-left">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          <div class="label">
+            <span class="name">Website</span>
+            <span class="desc">airavoice.app</span>
+          </div>
+        </div>
+        <span class="arrow">&#8594;</span>
+      </a>
+
+      <a class="link-row" href="https://www.instagram.com/aira.ai.dz?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">
         <div class="row-left">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
           <div class="label">
             <span class="name">Instagram</span>
-            <span class="desc">@dr_yazid_boutiouta_</span>
+            <span class="desc">@aira.ai.dz</span>
           </div>
         </div>
         <span class="arrow">&#8594;</span>
       </a>
 
-      <a class="link-row" href="https://www.facebook.com/profile.php?id=61556113772549" target="_blank" rel="noopener">
+      <a class="link-row" href="https://www.tiktok.com/@aira_ai_dz?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener">
         <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 8.5a4.5 4.5 0 1 0 4.5 4.5V3.5a5 5 0 0 0 5 5"/></svg>
           <div class="label">
-            <span class="name">Facebook</span>
-            <span class="desc">Practice page</span>
+            <span class="name">TikTok</span>
+            <span class="desc">@aira_ai_dz</span>
+          </div>
+        </div>
+        <span class="arrow">&#8594;</span>
+      </a>
+      <a class="link-row" href="mailto:aira.socialsdz@gmail.com">
+        <div class="row-left">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+          <div class="label">
+            <span class="name">Email</span>
+            <span class="desc">aira.socialsdz@gmail.com</span>
           </div>
         </div>
         <span class="arrow">&#8594;</span>
       </a>
 
-      <a class="link-row" href="https://maps.app.goo.gl/22KN3zwLRqWYaiMh9" target="_blank" rel="noopener">
+      <a class="link-row" href="tel:+213541937215">
         <div class="row-left">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
           <div class="label">
-            <span class="name">Location</span>
-            <span class="desc">Get directions</span>
+            <span class="name">Phone</span>
+            <span class="desc">0541 93 72 15</span>
+          </div>
+        </div>
+        <span class="arrow">&#8594;</span>
+      </a>
+
+      <a class="link-row" href="tel:+213540511147">
+        <div class="row-left">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.5 2.9.6a2 2 0 0 1 1.7 2z"/></svg>
+          <div class="label">
+            <span class="name">Phone</span>
+            <span class="desc">0540 51 11 47</span>
           </div>
         </div>
         <span class="arrow">&#8594;</span>
